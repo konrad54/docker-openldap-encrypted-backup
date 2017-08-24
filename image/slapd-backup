@@ -1,0 +1,26 @@
+#!/bin/bash -e
+
+# Usage: /sbin/slapd-backup dbnum filename
+dbnum=$1
+filename=$2
+
+backupPath="/data/backup"
+
+source /container/run/environment.sh
+
+# delete backups that are over $LDAP_BACKUP_TTL days
+find $backupPath -type f -mtime +$LDAP_BACKUP_TTL -exec rm {} \;
+
+# Date format for the dump file name
+dateFileFormat="+%Y%m%dT%H%M%S"
+backupFilePath="$backupPath/$(date "$dateFileFormat")-$filename"
+
+# create backup file
+/usr/sbin/slapcat -F /etc/ldap/slapd.d -n $dbnum -l $backupFilePath
+
+# zip and encrypt
+gzip $backupFilePath
+openssl smime -encrypt -binary -text -aes256 -in ${backupFilePath}.gz -out ${backupFilePath}.gz.enc -outform DER $LDAP_CRYPT_PUBLIC_KEY_FILENAME
+chmod 600 ${backupFilePath}.gz.enc
+
+exit 0
