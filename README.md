@@ -78,7 +78,6 @@ mkdir /tmp/openldap-encrypted-backup
 cd /tmp/openldap-encrypted-backup
 vi Dockerfile
 vi slapd-backup
-#chmod 755 slapd-backup
 
-docker build -t konrad54/docker-openldap-encrypted-backup:1.1.9 .
+docker build -t konrad54/docker-openldap-encrypted-backup:1.1.9-04 .
 ``` 

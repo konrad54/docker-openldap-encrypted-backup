@@ -20,7 +20,7 @@ backupFilePath="$backupPath/$(date "$dateFileFormat")-$filename"
 
 # zip and encrypt
 gzip $backupFilePath
-openssl smime -encrypt -binary -text -aes256 -in ${backupFilePath}.gz -out ${backupFilePath}.gz.enc -outform DER $LDAP_CRYPT_PUBLIC_KEY_FILENAME
+openssl smime -encrypt -binary -text -aes256 -in ${backupFilePath}.gz -out ${backupFilePath}.gz.enc -outform DER /container/service/slapd/assets/certs/$LDAP_CRYPT_PUBLIC_KEY_FILENAME
 chmod 600 ${backupFilePath}.gz.enc
 
 exit 0
