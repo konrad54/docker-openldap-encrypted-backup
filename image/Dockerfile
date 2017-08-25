@@ -5,4 +5,4 @@ MAINTAINER Konrad Biedowicz <konrad.biedowicz@uni-greifswald.de>
 
 COPY       slapd-backup /container/service/slapd-backup/assets/tool/slapd-backup
 
-RUN        chmod +x /container/service/slapd-backup/assets/tool/slapd-backup
+RUN        chmod 755 /container/run/service/slapd-backup/assets/tool/slapd-backup
