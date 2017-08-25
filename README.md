@@ -1,4 +1,4 @@
-# konrad54/openldap-encrypted-backup
+# konrad54/docker-openldap-encrypted-backup
 
 Licence AGPLv3
 
@@ -78,7 +78,7 @@ mkdir /tmp/openldap-encrypted-backup
 cd /tmp/openldap-encrypted-backup
 vi Dockerfile
 vi slapd-backup
-chmod 755 slapd-backup
+#chmod 755 slapd-backup
 
-docker build -t konrad54/openldap-encrypted-backup .
+docker build -t konrad54/docker-openldap-encrypted-backup:1.1.9 .
 ``` 
