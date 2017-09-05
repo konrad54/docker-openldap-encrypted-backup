@@ -2,6 +2,8 @@
 
 Licence AGPLv3
 
+This Docker image runs both: the openldap service and a configurable cron backup.
+
 ## Prepare private & public key for encrypt and decrypt backup files
 
 ``` sh
