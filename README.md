@@ -38,7 +38,7 @@ docker container run --rm -v /home/user/conf/ldapbackup-secure.pub.pem:/source:r
  -v /data/openldap/backup:/data/backup \
  -v /06-load-ppolicy.ldif:/container/service/slapd/assets/config/bootstrap/ldif/06-load-ppolicy.ldif \
  -v /07-configure-ppolicy.ldif:/container/service/slapd/assets/config/bootstrap/ldif/07-configure-ppolicy.ldif \
- konrad54/openldap-encrypted-backup:1.1.9 \
+ konrad54/openldap-encrypted-backup:1.1.9-07 \
  --copy-service --loglevel info
 ```
 
@@ -58,7 +58,7 @@ docker container run --rm \
 -e backupfile=abc-data.gz.enc \
 -v /data/openldap/backup:/data/backup \
 -v /directory-of-private-key/ldapbackup-secure.priv.pem:/ldapbackup-secure.priv.pem:ro \
-konrad54/openssl-decrypt-file:1.0.0
+konrad54/openssl-decrypt-file:1.0.1
 ```
 
 2. start restore with encrypted backup file
@@ -81,5 +81,5 @@ cd /tmp/openldap-encrypted-backup
 vi Dockerfile
 vi slapd-backup
 
-docker build -t konrad54/docker-openldap-encrypted-backup:1.1.9-04 .
+docker build -t konrad54/openldap-encrypted-backup:1.1.9-07 .
 ``` 

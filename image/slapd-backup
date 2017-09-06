@@ -21,7 +21,10 @@ backupFilePath="$backupPath/$(date "$dateFileFormat")-$filename"
 # zip and encrypt
 gzip $backupFilePath
 openssl smime -encrypt -binary -text -aes256 -in ${backupFilePath}.gz -out ${backupFilePath}.gz.enc -outform DER /container/service/slapd/assets/certs/$LDAP_CRYPT_PUBLIC_KEY_FILENAME
-chmod 600 ${backupFilePath}.gz.enc
+
+#file permission
+chown root:${BACKUP_FILESYSTEM_GROUPID} ${backupFilePath}.gz.enc
+chmod 640 ${backupFilePath}.gz.enc
 
 # delete uncrypted data file
 rm ${backupFilePath}.gz
