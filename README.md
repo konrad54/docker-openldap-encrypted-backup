@@ -31,6 +31,7 @@ docker container run --rm -v /home/user/conf/ldapbackup-secure.pub.pem:/source:r
  -e LDAP_BACKUP_DATA_CRON_EXP="* * * * *" \
  -e LDAP_BACKUP_CONFIG_CRON_EXP="* * * * *" \
  -e LDAP_BACKUP_TTL=30 \
+ -e BACKUP_FILESYSTEM_GROUPID=4000 \
  -v ldap_certs:/container/service/slapd/assets/certs \
  -v ldap_init:/container/service/slapd/assets/config/bootstrap/schema/example \
  -v ldap_data:/var/lib/ldap \
